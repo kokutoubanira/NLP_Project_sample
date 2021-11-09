@@ -1,0 +1,21 @@
+version: '3'
+services: 
+  jupyter:
+    image: techlab.azurecr.io/nlp_notebook/nlp_notebook:latest
+    # build: 
+    #     context: ./
+    #     dockerfile: Dockerfile
+    container_name: nlp_checkup
+    environment: 
+      TZ: "Asia/Tokyo"
+      JUPYTER_ENABLE_LAB: "yes"
+      USE_DAAL4PY_SKLEARN: "YES"
+      KMP_AFFINITY: "granularity=fine,compact,1,0"
+      KMP_BLOCKTIME: "1"
+      KMP_STTINGS: "1"
+      OMP_NUM_THREADS: "4"
+    ports:
+      - "8888:8888"
+      - "6006:6006"
+    volumes:
+      - ./:/home/jovyan/work/:z
